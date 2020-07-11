@@ -1,0 +1,42 @@
+
+Problem: Sliding Window Maximum (Maximum sum of all subarrays of size k) 
+
+int getMaxSumSubarray(int a[], int n, int k)
+{
+    if (k > n) return 0;
+
+    int max_sum = 0;
+
+    for (int i = 0; i < k; ++i)
+    {
+        max_sum += a[i];
+    }
+
+    int lower = 0, upper = k;
+
+    int window_sum = max_sum;
+
+    for (int i = k; i < n - k; ++i)
+    {
+        window_sum = window_sum + a[i] - a[i-k];
+
+        if (window_sum > max_sum)
+        {
+            max_sum = window_sum;
+            lower = i - k + 1;
+            upper = i;
+        }
+    }
+
+    cout << "Sub-array: ";
+
+    while (lower <= upper)
+    {
+        cout << a[lower] << " ";
+        ++lower;
+    }
+
+    cout << endl;
+
+    return max_sum;
+}
