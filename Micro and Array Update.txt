@@ -1,0 +1,56 @@
+
+# Problem: Micro and Array Update @ Hacker Earth
+
+https://www.hackerearth.com/practice/data-structures/arrays/1-d/practice-problems/algorithm/micro-and-array-update/description/
+
+int main() {
+	int num;
+	cin >> num;							
+
+	while (num--)
+	{
+		int N, K;
+
+		cin >> N >> K;
+
+		int a[N];
+
+		for (int i = 0; i < N; i++)
+		{
+			cin >> a[i];
+		}
+
+		cout << get_answer(a, N, K) << endl;
+	}
+}
+
+int get_answer(int a[], int n, int k)
+{
+	int min = a[0];
+
+	for (int i = 1; i < n; i++)
+	{
+		if (a[i] < min)
+		{
+			min = a[i];
+		}
+	}
+
+	return (k > min ? (k-min) : 0);
+}
+
+/*
+
+Input:
+
+2
+3 4
+1 2 5
+3 2
+2 5 5
+
+Output:
+3
+0
+
+*/
