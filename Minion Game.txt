@@ -1,0 +1,33 @@
+https://www.hackerrank.com/challenges/the-minion-game/problem
+
+def get_count(index, length):
+    return length - index
+
+def minion_game(string):
+    vowel_count = 0
+    consonant_count = 0
+
+    used = []
+    length = len(string)
+
+    for i in range(length):
+        used.append(string[i])
+
+        count = get_count(i, length)
+
+        if string[i] in 'AEIOU':
+            vowel_count += count
+        else:
+            consonant_count += count
+
+    if consonant_count > vowel_count:
+        print("Stuart", consonant_count)
+    elif consonant_count < vowel_count:
+        print("Kevin", vowel_count)
+    else:
+        print("Draw")
+
+
+if __name__ == '__main__':
+    s = input()
+    minion_game(s)
