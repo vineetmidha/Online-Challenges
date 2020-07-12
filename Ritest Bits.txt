@@ -1,0 +1,42 @@
+https://www.hackerrank.com/contests/all-india-contest-by-mission-helix-a-11th-july/challenges/easy-1-cc/problem
+
+'''
+1.  LSB should be 1
+2.  if length of list <= X
+        ans = len(list)
+3.  elif
+        1. count non-loving numbers
+        2. if count > x:
+                ans = x+loving
+            else:
+                ans = count+loving (length)
+
+'''
+
+def get_answer(numbers, x):
+    if len(numbers) <= x:
+        ans = len(numbers)
+    else:
+        non_loving = 0
+        
+        for each_num in numbers:
+            if bin(each_num)[-1] != '1':
+                non_loving += 1
+
+        loving = len(numbers) - non_loving
+        
+        if non_loving > x:
+            ans = x + loving
+        else:
+            ans = len(numbers)
+        
+    return ans
+
+tests = int(input())
+
+for _ in range(tests):
+    n, x = map(int, input().split())
+    
+    numbers = list(map(int, input().split()))
+    
+    print(get_answer(numbers, x))
