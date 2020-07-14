@@ -49,19 +49,40 @@ def plusOne1(digits):
 
 # Pro
 
-def plusOne2(digits):
-    i = -1
+def plus_one2(a):
+    if a[-1] != 9:  
+        a[-1] += 1
+        return a
 
-    while i >= -len(digits):
-        if digits[i] != 9:
-            digits[i] += 1
-            return digits
+    for i in range(len(a)-1,-1,-1):
+        if a[i] != 9:
+            a[i] += 1
+            return a
         
-        digits[i] = 0
-
-        i -= 1
+        a[i] = 0;
     else:
-        return [1] + digits[:]
+        return [1] + a
+
+mylist = [[1,2,3],[1,9,3],[1,2,9],[1,9,9],[9,9,9],[9],[0]]
 
 for each_list in mylist:
-    print(each_list, "-", plusOne2_recursive(each_list))
+    print(each_list, end=" -> ")
+    print(plus_one2(each_list))
+    
+'''
+Time Complexity:
+
+Best : O(1) # last digit != 9
+Worst : O(no. of digits) # all digits are 9
+
+Output:
+
+[1, 2, 3] -> [1, 2, 4]
+[1, 9, 3] -> [1, 9, 4]
+[1, 2, 9] -> [1, 3, 0]
+[1, 9, 9] -> [2, 0, 0]
+[9, 9, 9] -> [1, 0, 0, 0]
+[9] -> [1, 0]
+[0] -> [1]
+
+'''
