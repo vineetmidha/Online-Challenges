@@ -1,8 +1,12 @@
 Word Compression
 
-A student decides to perform some operations on big words to compress them, so they become easy to remember. An operation consists of choosing a group of K consecutive equal characters and removing them. The student keeps performing this operation as long as it is possible. Determine the final word after the operation is performed.
+A student decides to perform some operations on big words to compress them, so they become easy to remember. 
 
-It can be easily proven that the final word will be unique. Also, it is guaranteed that the final word consists of at least one character.
+An operation consists of choosing a group of K consecutive equal characters and removing them. 
+The student keeps performing this operation as long as it is possible. Determine the final word after the operation is performed.
+
+It can be easily proven that the final word will be unique. Also, it is guaranteed that 
+the final word consists of at least one character.
 
 Function Description:
 
