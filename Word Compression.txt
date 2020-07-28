@@ -1,0 +1,86 @@
+Word Compression
+
+A student decides to perform some operations on big words to compress them, so they become easy to remember. An operation consists of choosing a group of K consecutive equal characters and removing them. The student keeps performing this operation as long as it is possible. Determine the final word after the operation is performed.
+
+It can be easily proven that the final word will be unique. Also, it is guaranteed that the final word consists of at least one character.
+
+Function Description:
+
+compressWord has the following parameters:
+
+==> string word: a string of lowercase English letters
+==> int k : the number of consecutive equal characters
+
+Returns: 
+====> string: denotes the final word.
+
+Constraints: 
+...... 1 <= | word | <= 10^5
+...... 1 < k <= | word |
+
+
+Examples:
+
+Sample Case 0:
+
+word = "aba"
+k = 2
+output: aba
+
+Explanation: 
+There are no consecutive equal characters to be removed. So, the final word stays intact.
+
+Sample case 1:
+
+word = "abbcccb"
+k = 3
+Output: a
+
+Explanation:
+
+Remove 3 'c': Now word = "abbb"
+Remove 3 'b': Now word = "a"
+
+public class PracticeClass {
+
+	static Boolean is_k_chars_same(String s, int k, int index) {
+		for (int i = 1; i < k; i++) {
+			if (s.charAt(index) != s.charAt(index-1)) {
+				return false;
+			}
+			index--;
+		}
+		return true;
+	}
+	static String compressWord(String s, int k) {
+		
+		for (int i = k-1; i < s.length(); i++) {
+			
+			if (is_k_chars_same(s, k, i)) {
+				s = s.substring(0, i-(k-1)) + s.substring(i+1);
+				i = k-1;
+			}
+		}
+		
+		return s;
+	}
+	public static void main(String[] args) {
+		
+		String s1 = "abbcccb";
+		int k = 3;
+		
+		System.out.println(compressWord(s1, k)); // a
+
+		String s2 = "abbcccc";
+		String s3 = "abbccccbb";
+		k = 4;
+		
+		System.out.println(compressWord(s2, k));	// abb
+		System.out.println(compressWord(s3, k));	// a
+		
+		String s4 = "aba";
+		k = 2;
+		
+		System.out.println(compressWord(s4, k));	// aba	
+	}
+}
